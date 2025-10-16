@@ -6,20 +6,33 @@ const input = document.querySelector("input");
 const addBtn = document.querySelector(".add");
 const output = document.querySelector(".output");
 
+//ID GENERATOR FUNCITION
+
+function generateID() {
+  return Date.now().toString() + Math.random().toString(16).slice(2);
+}
+
 //ADDING TASK
 
 addBtn.addEventListener("click", () => {
   const value = input.value.trim();
   if (value === "") return;
 
+  //TASK OBJECT
+
+  const newTask = {
+    id: generateID(),
+    text: value,
+  };
+
   //CREATING ELEMENTS
 
-  creatingElements(input.value);
+  creatingElements(newTask);
 
   //LOCAL STORAGE
 
   let itmes = JSON.parse(localStorage.getItem("todoItems")) || [];
-  itmes.push(input.value);
+  itmes.push(newTask);
   localStorage.setItem("todoItems", JSON.stringify(itmes));
 
   //RESETING THE INPUT VALUE
@@ -51,7 +64,7 @@ function creatingElements(inpValue) {
 
   newFinished.innerHTML = "O";
   newCloses.innerHTML = "X";
-  newoutput.innerHTML = inpValue;
+  newoutput.innerHTML = inpValue.text;
 
   //COMPLETED TASK
 
@@ -60,13 +73,12 @@ function creatingElements(inpValue) {
     newFinished.classList.toggle("newFinsishednewDiv");
   });
 
-  //CLOSING TAKS
+  //DELETING TASK
 
-  newCloses.addEventListener("click", (e) => {
-    const textToRemove = newoutput.innerText;
-    e.target.parentElement.remove();
+  newCloses.addEventListener("click", () => {
+    newDiv.remove();
     let items = JSON.parse(localStorage.getItem("todoItems")) || [];
-    items = items.filter((item) => item !== textToRemove);
+    items = items.filter((item) => item.id !== inpValue.id);
     localStorage.setItem("todoItems", JSON.stringify(items));
   });
 }
