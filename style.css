@@ -1,0 +1,46 @@
+/* newDiv flex p-4 my-3 */
+#output {
+  min-height: 40%;
+  height: 70%;
+  overflow-y: auto;
+}
+.newDiv {
+  display: flex;
+  padding: 10px;
+  margin: 10px 0px;
+}
+.newDivfinished {
+  text-decoration-line: line-through;
+  color: gray;
+}
+/* btnFinished w-1/5 text-2xl font-bold hover:cursor-pointer hover:text-green-600 */
+.newFinished {
+  width: 10%;
+  font-size: large;
+  font-weight: bold;
+}
+.newFinished:hover {
+  cursor: pointer;
+  color: rgb(36, 174, 36);
+}
+.newFinsishednewDiv {
+  color: rgb(36, 174, 36);
+}
+/* w-3/2 text-xl px-1 overflow-hidden */
+.newoutput {
+  width: 80%;
+  font-size: 20px;
+  padding: 0px 5px;
+  overflow: hidden;
+}
+/* btnClose w-1/5 text-2xl text-red-600 font-bold hover:cursor-pointer hover:text-red-700 */
+.newClose {
+  width: 10%;
+  font-size: large;
+  color: red;
+  font-weight: bold;
+}
+.newClose:hover {
+  cursor: pointer;
+  columns: rgb(187, 13, 13);
+}
